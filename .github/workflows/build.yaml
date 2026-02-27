@@ -25,6 +25,8 @@ jobs:
           sudo apt-get install -y \
             git \
             gcc \
+            gcc-arm-none-eabi \
+            binutils-arm-none-eabi \
             avr-libc \
             dfu-programmer \
             dfu-util \
@@ -39,11 +41,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install qmk
 
-      # This compiles using the QMK CLI. You MUST set KEYBOARD and KEYMAP below.
+      - name: Setup QMK firmware
+        run: |
+          qmk setup -H ~/qmk_firmware -y
+          mkdir -p ~/qmk_firmware/keyboards/rp2040_handwired_4x6
+          cp -r $GITHUB_WORKSPACE/* ~/qmk_firmware/keyboards/rp2040_handwired_4x6/
+
+      # This compiles using the QMK CLI.
       - name: Compile firmware
         env:
-          KEYBOARD: "PUT_YOUR_KEYBOARD_HERE"
-          KEYMAP: "default"
+          KEYBOARD: "rp2040_handwired_4x6"
+          KEYMAP: "sina"
         run: |
           qmk compile -kb "$KEYBOARD" -km "$KEYMAP"
 
@@ -52,6 +60,6 @@ jobs:
         with:
           name: firmware
           path: |
-            *.uf2
-            *.hex
-            *.bin
+            ~/qmk_firmware/*.uf2
+            ~/qmk_firmware/*.hex
+            ~/qmk_firmware/*.bin
