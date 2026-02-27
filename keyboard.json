@@ -1,6 +1,6 @@
 {
     "manufacturer": "SinaSalvatrice",
-    "keyboard_name": "promicro_handwired_4x6",
+    "keyboard_name": "rp2040_handwired_4x6",
     "maintainer": "SinaSalvatrice",
     "processor": "RP2040",
     "bootloader": "rp2040",
