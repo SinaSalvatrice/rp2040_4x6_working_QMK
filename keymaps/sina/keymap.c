@@ -9,6 +9,7 @@
 #include QMK_KEYBOARD_H
 #include "lib/lib8tion/lib8tion.h"   // sin8(), scale8()
 #include "timer.h"
+#include "print.h"
 
 /*
   RGB behavior adapted per user request:
@@ -230,6 +231,10 @@ static void render_frame(void) {
 }
 
 void keyboard_post_init_user(void) {
+debug_enable = true;
+    debug_matrix = true;
+    debug_keyboard = true;
+
 #ifdef ENCODER_BTN_PIN
     setPinInputHigh(ENCODER_BTN_PIN);
 #endif
