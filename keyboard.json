@@ -21,8 +21,8 @@
         ]
     },
     "matrix_pins": {
-        "cols": ["GP2", "GP3", "GP4", "GP5"],
-        "rows": ["GP6", "GP7", "GP8", "GP9", "GP10", "GP11"]
+        "cols": ["GP8", "GP9", "GP10", "GP11"],
+        "rows": ["GP2", "GP3", "GP4", "GP5", "GP6", "GP7"]
     },
     "url": "",
     "usb": {
