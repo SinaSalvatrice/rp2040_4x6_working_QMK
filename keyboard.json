@@ -7,7 +7,7 @@
     "diode_direction": "ROW2COL",
     "encoder": {
         "rotary": [
-            { "pin_a": "GP12", "pin_b": "GP13", "resolution": 4 }
+            { "pin_a": "GP10", "pin_b": "GP11", "resolution": 4 }
         ]
     },
     "matrix_pins": {

@@ -238,9 +238,7 @@ debug_enable = true;
 #ifdef ENCODER_BTN_PIN
     setPinInputHigh(ENCODER_BTN_PIN);
 #endif
-    // NOTE: removed rgblight_enable_noeeprom() to avoid a hardware-level one-frame flash at startup.
-    // If your controller requires enabling the driver, uncomment the next line — but it may cause a blink.
-    // rgblight_enable_noeeprom();
+    rgblight_enable_noeeprom();
 
     t_frame    = timer_read();
     wander_tmr = timer_read();
