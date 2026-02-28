@@ -4,15 +4,16 @@
     "maintainer": "Sina",
     "processor": "RP2040",
     "bootloader": "rp2040",
-    "diode_direction": "COL2ROW",
+    "diode_direction": "ROW2COL",
     "encoder": {
         "rotary": [
             { "pin_a": "GP12", "pin_b": "GP13", "resolution": 4 }
         ]
     },
     "matrix_pins": {
-        "cols": ["GP6", "GP7", "GP8", "GP9"],
         "rows": ["GP0", "GP1", "GP2", "GP3", "GP4", "GP5"]
+         "cols": ["GP6", "GP7", "GP8", "GP9"],
+        
     },
     "url": "",
     "usb": {
