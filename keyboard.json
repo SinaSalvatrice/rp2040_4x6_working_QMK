@@ -11,8 +11,8 @@
         ]
     },
     "matrix_pins": {
-        "cols": ["GP8", "GP9", "GP10", "GP11"],
-        "rows": ["GP2", "GP3", "GP4", "GP5", "GP6", "GP7"]
+        "cols": ["GP6", "GP7", "GP8", "GP9"],
+        "rows": ["GP0", "GP1", "GP2", "GP3", "GP4", "GP5"]
     },
     "url": "",
     "usb": {
@@ -20,7 +20,7 @@
         "pid": "0x3471",
         "vid": "0x1209"
     },
-    "ws2812": { "pin": "GP15" },
+    "ws2812": { "pin": "GP13" },
     "rgblight": { "led_count": 10 },
     "features": {
         "bootmagic": true,
