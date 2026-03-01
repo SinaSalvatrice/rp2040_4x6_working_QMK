@@ -352,9 +352,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
     /* Send mouse wheel events */
     if (clockwise) {
-        tap_code(KC_WH_U); /* wheel up */
+        tap_code16(MS_WHLU); /* wheel up */
     } else {
-        tap_code(KC_WH_D); /* wheel down */
+        tap_code16(MS_WHLD); /* wheel down */
     }
 
     return false;
