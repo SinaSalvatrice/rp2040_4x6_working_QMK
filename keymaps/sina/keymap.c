@@ -243,9 +243,9 @@ static void render_frame(void) {
 }
 
 void keyboard_post_init_user(void) {
-debug_enable = true;
-    debug_matrix = true;
-    debug_keyboard = true;
+    debug_enable = false;
+    debug_matrix = false;
+    debug_keyboard = false;
 
 #if USB_SAFE_MINIMAL
     runtime_ready = false;
@@ -268,8 +268,8 @@ debug_enable = true;
     ind_active = true;
     ind_tmr    = timer_read();
 
-    /* default mode = all-LED breathing */
-    rgb_mode = 2;
+    /* default mode = wander-only */
+    rgb_mode = 0;
 
     /* default user-level on */
     user_rgb_on = true;
@@ -350,22 +350,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         return false;
     }
 
-    /* Dot movement/visibility */
-    if (clockwise) {
-        enc_dot_pos = (enc_dot_pos + DOT_STEP_PER_TICK) % LED_COUNT;
-    } else {
-        enc_dot_pos = (enc_dot_pos + LED_COUNT - (DOT_STEP_PER_TICK % LED_COUNT)) % LED_COUNT;
-    }
-    last_turn = timer_read();
-
     /* Send mouse wheel events */
     if (clockwise) {
-        tap_code16(MS_WHLU); /* wheel up */
+        tap_code(KC_WH_U); /* wheel up */
     } else {
-        tap_code16(MS_WHLD); /* wheel down */
+        tap_code(KC_WH_D); /* wheel down */
     }
 
-    render_frame();
     return false;
 }
 #endif
@@ -450,12 +441,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*-----------------------NUMPAD----------------------------*/
     [0] = LAYOUT_6x4(
-        KC_NO,              KC_F14,                 KC_F15,                 KC_BSPC,
+        KC_NO,              MO(1),                  MO(4),                  KC_BSPC,
         KC_NUM,             KC_PAST,                KC_PSLS,                KC_PMNS,
         KC_P7,              KC_P8,                  KC_P9,                  KC_PPLS,
         KC_P4,              KC_P5,                  KC_P6,                  KC_NO,
         KC_P1,              KC_P2,                  KC_P3,                  KC_PENT,
-        KC_P0,              KC_NO,                  KC_PDOT,                KC_NO
+        KC_NO,              KC_P0,                  KC_PDOT,                KC_NO
     ),
 
     /*-----------------------EDIT------------------------------*/
