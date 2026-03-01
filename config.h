@@ -31,9 +31,3 @@
 // optional, aber oft sinnvoll:
 #define RGBLIGHT_SLEEP
 #define RGBLIGHT_TIMEOUT 600000  // 10 Minuten (ms)
-
-
-#define VIAL_KEYBOARD_UID {0x9A, 0x3F, 0xC1, 0x72, 0x4D, 0xB8, 0xE5, 0x06}
-#define VIAL_INSECURE
-#define VIAL_UNLOCK_COMBO_ROWS {0, 5}
-#define VIAL_UNLOCK_COMBO_COLS {0, 3}
