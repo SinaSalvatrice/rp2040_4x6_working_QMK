@@ -110,7 +110,8 @@ static const uint8_t indicator_led_for_layer[5] = { 0, 2, 7, 9, 4 };
 
 /* Dithered scaling: makes low-brightness smooth */
 static uint8_t dither_scale_sin8(uint16_t now_div, uint8_t vmax) {
-    uint8_t s = sin8(now_div);               // 0..255
+    uint8_t phase = (uint8_t)now_div;
+    uint8_t s = (phase < 128) ? (phase << 1) : ((255 - phase) << 1); // triangle 0..254
     uint16_t v16 = (uint16_t)s * vmax;       // 0..(255*vmax)
     uint8_t v = v16 >> 8;                    // floor
     uint8_t frac = v16 & 0xFF;               // remainder
