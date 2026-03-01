@@ -8,7 +8,7 @@
 #define SERIAL_NUMBER "SINA-RP2040-4X6-01"
 
 // Encoder Button (active-low gegen GND, mit Pullup)
-#define ENCODER_BTN_PIN GP13
+#define ENCODER_BTN_PIN GP12
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 // WS2812 / RGBLIGHT (QMK aktuell)
