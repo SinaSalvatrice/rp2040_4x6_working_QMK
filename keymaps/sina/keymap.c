@@ -10,6 +10,8 @@
 #include "timer.h"
 #include "print.h"
 
+#define USB_SAFE_MINIMAL 1
+
 /*
   RGB behavior adapted per user request:
   - Default: wandering dot only (no static breathing)
@@ -70,6 +72,9 @@ static uint8_t rgb_mode = 0;
 
 /* user-level on/off (keeps from calling library toggle which causes a blink) */
 static bool user_rgb_on = true;
+
+/* protect against early callback execution before full init */
+static bool runtime_ready = false;
 
 /* Button debounce for encoder button */
 static bool     btn_released  = true;
@@ -136,6 +141,10 @@ static void clear_all_leds(void) {
 }
 
 static void render_frame(void) {
+    if (!runtime_ready) {
+        return;
+    }
+
     /* Use user_rgb_on as guard to avoid library-level toggles that cause a blink */
     if (!user_rgb_on) {
         clear_all_leds();
@@ -238,6 +247,11 @@ debug_enable = true;
     debug_matrix = true;
     debug_keyboard = true;
 
+#if USB_SAFE_MINIMAL
+    runtime_ready = false;
+    return;
+#endif
+
 #ifdef ENCODER_BTN_PIN
     setPinInputHigh(ENCODER_BTN_PIN);
 #endif
@@ -260,10 +274,16 @@ debug_enable = true;
     /* default user-level on */
     user_rgb_on = true;
 
+    runtime_ready = true;
+
     render_frame();
 }
 
 void matrix_scan_user(void) {
+#if USB_SAFE_MINIMAL
+    return;
+#endif
+
     /* Animation tick */
     if (timer_elapsed(t_frame) >= FRAME_MS) {
         t_frame = timer_read();
@@ -315,7 +335,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         ind_tmr    = timer_read();
     }
 
-    render_frame();
+    if (runtime_ready) {
+        render_frame();
+    }
     return state;
 }
 
@@ -323,6 +345,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
     (void)index;
+
+    if (!runtime_ready) {
+        return false;
+    }
 
     /* Dot movement/visibility */
     if (clockwise) {
@@ -347,6 +373,8 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 /* ---------- Settings-Layer Custom RGB Controls ---------- */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!record->event.pressed) return true;
+
+    if (!runtime_ready) return true;
 
     switch (keycode) {
         case RGB_UI_TOG:

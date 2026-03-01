@@ -1,6 +1,6 @@
 {
     "manufacturer": "Sina",
-    "keyboard_name": "rp2040_zero_6x4",
+    "keyboard_name": "rp2040_handwired_4x6",
     "maintainer": "Sina",
     "processor": "RP2040",
     "bootloader": "rp2040",
@@ -17,7 +17,7 @@
     "url": "",
     "usb": {
         "device_version": "1.0.0",
-        "pid": "0x0001",
+        "pid": "0x0002",
         "vid": "0xFEED"
     },
     "ws2812": { "pin": "GP13" },
