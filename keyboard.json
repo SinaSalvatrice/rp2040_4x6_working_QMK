@@ -20,7 +20,7 @@
         "pid": "0x0002",
         "vid": "0xFEED"
     },
-    "ws2812": { "pin": "GP12" },
+    "ws2812": { "pin": "GP13" },
     "rgblight": { "led_count": 10 },
     "features": {
         "bootmagic": true,
