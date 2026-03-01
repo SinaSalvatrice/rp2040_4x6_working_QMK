@@ -24,9 +24,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install qmk
 
-      - name: Set up QMK firmware tree
+      - name: Set up Vial-QMK firmware tree
         run: |
-          qmk setup -y vial-kb/vial-qmk
+          rm -rf ~/qmk_firmware
+          git clone https://github.com/vial-kb/vial-qmk.git ~/qmk_firmware
+          qmk config user.qmk_home=~/qmk_firmware
 
       - name: Copy keyboard into QMK tree
         run: |
