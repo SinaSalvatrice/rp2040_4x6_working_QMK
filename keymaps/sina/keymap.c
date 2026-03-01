@@ -152,11 +152,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
 
         case RGB_UI_WSPD_UP:
+            #ifdef RGB_SPI
             tap_code16(RGB_SPI);
+            #else
+            rgb_mode_idx = (rgb_mode_idx + 1) % ARRAY_SIZE(rgb_modes);
+            apply_rgb_state();
+            #endif
             return false;
 
         case RGB_UI_WSPD_DN:
+            #ifdef RGB_SPD
             tap_code16(RGB_SPD);
+            #else
+            rgb_mode_idx = (rgb_mode_idx == 0) ? (ARRAY_SIZE(rgb_modes) - 1) : (rgb_mode_idx - 1);
+            apply_rgb_state();
+            #endif
             return false;
     }
 
