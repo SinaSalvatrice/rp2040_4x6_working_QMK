@@ -32,13 +32,13 @@
 #define FRAME_MS               20   // a bit slower to reduce flicker
 
 /* Runtime-changeable through Settings-Layer */
-static uint8_t  base_v_max      = 25;    // breathing max (low)
+static uint8_t  base_v_max      = 90;    // breathing max (visible)
 static uint8_t  base_v_min      = 1;     // breathing floor (non-zero to avoid blink)
 static uint16_t wander_step_ms  = 120;   // wander speed
 static uint8_t  current_sat     = 255;   // saturation (0..255)
 
-#define WANDER_V                55   // wander-peak brightness
-#define WANDER_TRAIL_V          24   // trail neighbor brightness
+#define WANDER_V               140   // wander-peak brightness
+#define WANDER_TRAIL_V          60   // trail neighbor brightness
 
 #define DOT_V                   80   // encoder-dot brightness
 #define DOT_HOLD_MS            250
@@ -139,6 +139,7 @@ static void render_frame(void) {
     /* Use user_rgb_on as guard to avoid library-level toggles that cause a blink */
     if (!user_rgb_on) {
         clear_all_leds();
+        rgblight_set();
         return;
     }
 
@@ -228,6 +229,8 @@ static void render_frame(void) {
         uint8_t dp = (enc_dot_pos >= LED_COUNT) ? 0 : enc_dot_pos;
         set_led_hsv(dp, current_hue, current_sat, dot_v);
     }
+
+    rgblight_set();
 }
 
 void keyboard_post_init_user(void) {
@@ -251,8 +254,8 @@ debug_enable = true;
     ind_active = true;
     ind_tmr    = timer_read();
 
-    /* default mode = wander-only */
-    rgb_mode = 0;
+    /* default mode = all-LED breathing */
+    rgb_mode = 2;
 
     /* default user-level on */
     user_rgb_on = true;
