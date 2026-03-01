@@ -17,8 +17,8 @@
     "url": "",
     "usb": {
         "device_version": "1.0.0",
-        "pid": "0x3471",
-        "vid": "0x1209"
+        "pid": "0x0001",
+        "vid": "0xFEED"
     },
     "ws2812": { "pin": "GP13" },
     "rgblight": { "led_count": 10 },

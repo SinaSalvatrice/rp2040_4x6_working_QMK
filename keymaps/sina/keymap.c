@@ -7,7 +7,6 @@
  * Kept all other logic intact.
  */
 #include QMK_KEYBOARD_H
-#include "lib/lib8tion/lib8tion.h"   // sin8(), scale8()
 #include "timer.h"
 #include "print.h"
 
