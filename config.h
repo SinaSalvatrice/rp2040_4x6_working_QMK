@@ -1,11 +1,5 @@
 #pragma once
 
-#define VENDOR_ID 0xFEED
-#define PRODUCT_ID 0x0001
-#define DEVICE_VER 0x0001
-#define MANUFACTURER "Sina"
-#define PRODUCT "rp2040_handwired_4x6"
-
 // Encoder Button (active-low gegen GND, mit Pullup)
 #define ENCODER_BTN_PIN GP12
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5

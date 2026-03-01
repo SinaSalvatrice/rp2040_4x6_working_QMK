@@ -17,7 +17,7 @@
     "url": "",
     "usb": {
         "device_version": "1.0.0",
-        "pid": "0x0001",
+        "pid": "0x6064",
         "vid": "0xFEED"
     },
     "ws2812": { "pin": "GP13" },
