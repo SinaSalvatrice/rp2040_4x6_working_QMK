@@ -28,7 +28,8 @@
         "nkro": true,
         "encoder": true,
         "rgblight": true,
-        "console": true
+        "console": false,
+        "via": true
     },
     "layouts": {
         "LAYOUT_6x4": {
