@@ -42,7 +42,7 @@ jobs:
       - name: Compile firmware
         run: |
           cd ~/qmk_firmware
-          qmk compile -v -j 1 -kb rp2040_handwired_4x6 -km sina
+          qmk compile -j 1 -kb rp2040_handwired_4x6 -km sina
 
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
