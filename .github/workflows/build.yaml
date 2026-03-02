@@ -58,7 +58,7 @@ jobs:
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
+          name: rp2040_4x6_firmware
           path: |
             ~/qmk_firmware/*.uf2
             ~/qmk_firmware/*.hex
