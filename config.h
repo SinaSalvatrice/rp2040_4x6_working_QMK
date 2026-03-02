@@ -1,7 +1,5 @@
 #pragma once
 
-#define SERIAL_NUMBER "SINA-RP2040-4X6-01"
-
 // Encoder Button (active-low gegen GND, mit Pullup)
 #define ENCODER_BTN_PIN GP12
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
