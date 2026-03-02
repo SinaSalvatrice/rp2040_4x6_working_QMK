@@ -26,8 +26,6 @@ static uint8_t rgb_mode_idx = 0;
 static const uint8_t rgb_modes[] = {
     RGBLIGHT_MODE_STATIC_LIGHT,
     RGBLIGHT_MODE_BREATHING,
-    RGBLIGHT_MODE_RAINBOW_MOOD,
-    RGBLIGHT_MODE_RAINBOW_SWIRL
 };
 
 static uint8_t hue_for_layer(uint8_t layer) {
