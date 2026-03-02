@@ -43,7 +43,9 @@ jobs:
 
       - name: Setup QMK firmware
         run: |
-          qmk setup -H ~/qmk_firmware -y
+          qmk setup -H ~/qmk_firmware -y || true
+          sudo cp ~/qmk_firmware/util/udev/50-qmk.rules /etc/udev/rules.d/ 2>/dev/null || true
+          sudo udevadm control --reload-rules 2>/dev/null || true
           mkdir -p ~/qmk_firmware/keyboards/rp2040_handwired_4x6
           cp -r $GITHUB_WORKSPACE/* ~/qmk_firmware/keyboards/rp2040_handwired_4x6/
 
