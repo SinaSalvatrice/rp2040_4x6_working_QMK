@@ -1,20 +1,10 @@
 #pragma once
 
-// USB descriptors (explicitly set in firmware to avoid host cache/descriptor mismatch)
-#define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x4E50
-#define MANUFACTURER "Sina"
-#define PRODUCT "rp2040_handwired_4x6"
-#define VERSION "0001"
-#define SERIAL_NUMBER   0001
-
 // Encoder Button (active-low gegen GND, mit Pullup)
 #define ENCODER_BTN_PIN GP12
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 // WS2812 / RGBLIGHT (QMK aktuell)
-#define WS2812_DI_PIN GP13
-#define RGBLIGHT_LED_COUNT 10     // Anzahl NeoPixel
 #define RGBLIGHT_LIMIT_VAL 80
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_STATIC_LIGHT
