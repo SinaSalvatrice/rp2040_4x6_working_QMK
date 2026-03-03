@@ -1,4 +1,4 @@
-name: Build QMK firmware
+name: Build Silent_display_3x3firmware
 
 on:
   push:
@@ -35,7 +35,16 @@ jobs:
             unzip \
             wget \
             zip
+      
+      - name: Cache Python packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
+      
       - name: Install QMK CLI
         run: |
           python -m pip install --upgrade pip
@@ -46,13 +55,13 @@ jobs:
           qmk setup -H ~/qmk_firmware -y || true
           sudo cp ~/qmk_firmware/util/udev/50-qmk.rules /etc/udev/rules.d/ 2>/dev/null || true
           sudo udevadm control --reload-rules 2>/dev/null || true
-          mkdir -p ~/qmk_firmware/keyboards/rp2040_handwired_4x6
-          cp -r $GITHUB_WORKSPACE/* ~/qmk_firmware/keyboards/rp2040_handwired_4x6/
+          mkdir -p ~/qmk_firmware/keyboards/Silent_display_3x3
+          cp -r $GITHUB_WORKSPACE/* ~/qmk_firmware/keyboards/Silent_display_3x3/
 
       # This compiles using the QMK CLI.
       - name: Compile firmware
         env:
-          KEYBOARD: "rp2040_handwired_4x6"
+          KEYBOARD: "Silent_display_3x3"
           KEYMAP: "sina"
         run: |
           qmk compile -kb "$KEYBOARD" -km "$KEYMAP"
@@ -60,7 +69,7 @@ jobs:
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
         with:
-          name: rp2040_4x6_firmware
+          name: Silent_display_3x3_firmware
           path: |
             ~/qmk_firmware/*.uf2
             ~/qmk_firmware/*.hex
