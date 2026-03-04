@@ -39,6 +39,12 @@ jobs:
             "$GITHUB_WORKSPACE/" \
             ~/qmk_firmware/keyboards/rp2040_handwired_4x6/
 
+      - name: Remove legacy platform header overrides
+        run: |
+          rm -f ~/qmk_firmware/keyboards/rp2040_handwired_4x6/platforms/eeprom.h
+          rm -f ~/qmk_firmware/keyboards/rp2040_handwired_4x6/platforms/wear_leveling_drivers.h
+          rmdir --ignore-fail-on-non-empty ~/qmk_firmware/keyboards/rp2040_handwired_4x6/platforms || true
+
       - name: Install ARM GCC toolchain
         run: sudo apt-get update && sudo apt-get install -y gcc-arm-none-eabi
 
