@@ -1,4 +1,4 @@
-name: Build Silent_display_3x3firmware
+name: Build rp2040_working_QMK_firmware
 
 on:
   push:
@@ -55,13 +55,13 @@ jobs:
           qmk setup -H ~/qmk_firmware -y || true
           sudo cp ~/qmk_firmware/util/udev/50-qmk.rules /etc/udev/rules.d/ 2>/dev/null || true
           sudo udevadm control --reload-rules 2>/dev/null || true
-          mkdir -p ~/qmk_firmware/keyboards/Silent_display_3x3
-          cp -r $GITHUB_WORKSPACE/* ~/qmk_firmware/keyboards/Silent_display_3x3/
+          mkdir -p ~/qmk_firmware/keyboards/rp2040_working_QMK_firmware
+          cp -r $GITHUB_WORKSPACE/* ~/qmk_firmware/keyboards/rp2040_working_QMK_firmware/
 
       # This compiles using the QMK CLI.
       - name: Compile firmware
         env:
-          KEYBOARD: "Silent_display_3x3"
+          KEYBOARD: "rp2040_working_QMK_firmware"
           KEYMAP: "sina"
         run: |
           qmk compile -kb "$KEYBOARD" -km "$KEYMAP"
@@ -69,7 +69,7 @@ jobs:
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Silent_display_3x3_firmware
+          name: rp2040_firmware
           path: |
             ~/qmk_firmware/*.uf2
             ~/qmk_firmware/*.hex
