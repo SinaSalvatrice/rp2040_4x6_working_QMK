@@ -1,6 +1,6 @@
 {
     "name": "RP2040 Handwired 4x6",
-    "vendorId": "0xFEED",
+    "vendorId": "0x5361",
     "productId": "0x4E50",
     "firmwareVersion": 0,
     "matrix": { "rows": 6, "cols": 4 },
