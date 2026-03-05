@@ -16,13 +16,13 @@
         "cols": ["GP6", "GP7", "GP8", "GP9"]
     },
     "url": "",
-    "eeprom": {
-        "driver": "wear_leveling"
-    },
     "usb": {
         "device_version": "0.0.2",
         "pid": "0x4E51",
         "vid": "0xFEED"
+        "device_version": "0.0.1",
+        "pid": "0x4E50",
+        "vid": "0x5361"
     },
     "ws2812": { "pin": "GP13" },
     "rgblight": { "led_count": 10 },
@@ -33,7 +33,7 @@
         "encoder": true,
         "rgblight": true,
         "console": false,
-        "via": true
+        "via": false
     },
     "layouts": {
         "LAYOUT_6x4": {
