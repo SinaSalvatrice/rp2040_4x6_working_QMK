@@ -17,6 +17,9 @@
     },
     "url": "",
     "usb": {
+        "device_version": "0.0.2",
+        "pid": "0x4E51",
+        "vid": "0xFEED"
         "device_version": "0.0.1",
         "pid": "0x4E50",
         "vid": "0x5361"
