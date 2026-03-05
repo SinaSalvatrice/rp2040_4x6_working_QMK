@@ -1,9 +1,9 @@
 #pragma once
 
 // Explicit USB identity to keep descriptors stable for Windows enumeration.
-#define VENDOR_ID 0xFEED
-#define PRODUCT_ID 0x4E51
-#define DEVICE_VER 0x0002
+#define VENDOR_ID 0x5361
+#define PRODUCT_ID 0x4E50
+#define DEVICE_VER 0x0001
 #define MANUFACTURER Sina
 #define PRODUCT rp2040_handwired_4x6
 
