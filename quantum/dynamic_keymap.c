@@ -21,6 +21,7 @@
 #include "send_string.h"
 #include "keycodes.h"
 #include "nvm_dynamic_keymap.h"
+#include "vial.h"
 
 #ifdef ENCODER_ENABLE
 #    include "encoder.h"
