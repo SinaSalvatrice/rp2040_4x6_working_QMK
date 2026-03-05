@@ -5,6 +5,10 @@ btn 13
 rgb 14
 
 USB:
-  VID 0xFEED = standard QMK testing/development VID (used for handwired/custom keyboards)
-  PID 0x4E50 = "NP" (NumPad) in ASCII; chosen to be unique within the 0xFEED VID space
-               and avoid Windows driver-cache conflicts with the previous generic PID 0x0002
+  VID 0x5361 = custom VID for this keyboard ("Sa" in ASCII, Sina's handwired)
+               Changed from 0xFEED (the shared QMK test VID) to avoid Windows driver-cache
+               conflicts when reflashing. If you reflash from an older build that used 0xFEED,
+               Windows may show "Unknown USB device" once. To fix: open Device Manager,
+               find the old device under "Universal Serial Bus devices", uninstall it
+               (check "Delete the driver software for this device"), then re-plug the keyboard.
+  PID 0x4E50 = "NP" (NumPad) in ASCII
