@@ -15,7 +15,7 @@
         "rows": ["GP0", "GP1", "GP2", "GP3", "GP4", "GP5"],
         "cols": ["GP6", "GP7", "GP8", "GP9"]
     },
-    "url": "https://github.com/sina/rp2040_4x6_working_QMK",
+    "url": "https://github.com/SinaSalvatrice/rp2040_4x6_working_qmk",
     "usb": {
         "device_version": "0.0.1",
         "pid": "0x4E50",
