@@ -17,7 +17,7 @@
 
 // RP2040: double-tap reset into UF2 bootloader
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200
 
 // optional, aber oft sinnvoll:
 #define RGBLIGHT_SLEEP
