@@ -1,12 +1,5 @@
 #pragma once
 
-// Explicit USB identity to keep descriptors stable for Windows enumeration.
-#define VENDOR_ID 0x5361
-#define PRODUCT_ID 0x4E50
-#define DEVICE_VER 0x0001
-#define MANUFACTURER Sina
-#define PRODUCT rp2040_handwired_4x6
-
 // Encoder Button (active-low gegen GND, mit Pullup)
 #define ENCODER_BTN_PIN GP12
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
