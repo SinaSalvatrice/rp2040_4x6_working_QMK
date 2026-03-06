@@ -32,18 +32,18 @@ jobs:
 
       - name: Copy keyboard into QMK tree
         run: |
-          mkdir -p ~/qmk_firmware/keyboards/rp2040_handwired_4x6
+          mkdir -p ~/qmk_firmware/keyboards/rp2040_4x6_working_qmk
           rsync -a --delete \
             --exclude '.git' \
             --exclude '.github' \
             "$GITHUB_WORKSPACE/" \
-            ~/qmk_firmware/keyboards/rp2040_handwired_4x6/
+            ~/qmk_firmware/keyboards/rp2040_4x6_working_qmk/
 
       - name: Remove legacy platform header overrides
         run: |
-          rm -f ~/qmk_firmware/keyboards/rp2040_handwired_4x6/platforms/eeprom.h
-          rm -f ~/qmk_firmware/keyboards/rp2040_handwired_4x6/platforms/wear_leveling_drivers.h
-          rmdir --ignore-fail-on-non-empty ~/qmk_firmware/keyboards/rp2040_handwired_4x6/platforms || true
+          rm -f ~/qmk_firmware/keyboards/rp2040_4x6_working_qmk/platforms/eeprom.h
+          rm -f ~/qmk_firmware/keyboards/rp2040_4x6_working_qmk/platforms/wear_leveling_drivers.h
+          rmdir --ignore-fail-on-non-empty ~/qmk_firmware/keyboards/rp2040_4x6_working_qmk/platforms || true
 
       - name: Install ARM GCC toolchain
         run: sudo apt-get update && sudo apt-get install -y gcc-arm-none-eabi
@@ -54,12 +54,12 @@ jobs:
       - name: Compile firmware
         run: |
           cd ~/qmk_firmware
-          qmk compile -j 1 -kb rp2040_handwired_4x6 -km sina
+          qmk compile -j 1 -kb rp2040_4x6_working_qmk -km default
 
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
         with:
-          name: rp2040_handwired_4x6_sina_firmware
+          name: rp2040_4x6_working_qmk_default_firmware
           path: |
             ~/qmk_firmware/*.uf2
             ~/qmk_firmware/.build/*.uf2
