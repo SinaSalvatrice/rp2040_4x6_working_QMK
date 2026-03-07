@@ -1,4 +1,4 @@
-name: Build QMK Firmware
+name: Build QMK Firmware via
 
 on:
   workflow_dispatch:
@@ -59,7 +59,7 @@ jobs:
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
         with:
-          name: rp2040_4x6_working_qmk_default_firmware
+          name: rp2040_4x6_working_qmk_via_firmware
           path: |
             ~/qmk_firmware/*.uf2
             ~/qmk_firmware/.build/*.uf2
