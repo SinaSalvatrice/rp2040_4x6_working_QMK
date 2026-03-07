@@ -54,7 +54,7 @@ jobs:
       - name: Compile firmware
         run: |
           cd ~/qmk_firmware
-          qmk compile -j 1 -kb rp2040_4x6_working_qmk -km default
+          qmk compile -j 1 -kb rp2040_4x6_working_qmk -km via
 
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
