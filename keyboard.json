@@ -18,7 +18,7 @@
     "url": "https://github.com/SinaSalvatrice/rp2040_4x6_working_qmk",
     "usb": {
         "device_version": "0.0.1",
-        "pid": "0x4E50",
+        "pid": "0x4E51",
         "vid": "0x5361"
     },
     "ws2812": { "pin": "GP13" },
